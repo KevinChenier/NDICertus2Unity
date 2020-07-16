@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 96f461095bba77a4dbf83eb0e5852848
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: abdomenLower
+    100002: abdomenUpper
+    100004: chestLower
+    100006: chestUpper
+    100008: G3M_TShirt_14312
+    100010: G3M_TShirt_14312_LOD0
+    100012: G3M_TShirt_14312_LOD1
+    100014: G3M_TShirt_14312_LOD2
+    100016: G3M_TShirt_14312_LOD3
+    100018: head
+    100020: hip
+    100022: lCollar
+    100024: lEar
+    100026: //RootNode
+    100028: lForearmBend
+    100030: lForearmTwist
+    100032: lPectoral
+    100034: lShin
+    100036: lShldrBend
+    100038: lShldrTwist
+    100040: lThighBend
+    100042: lThighTwist
+    100044: neckLower
+    100046: neckUpper
+    100048: pelvis
+    100050: rCollar
+    100052: rEar
+    100054: rForearmBend
+    100056: rForearmTwist
+    100058: rPectoral
+    100060: rShin
+    100062: rShldrBend
+    100064: rShldrTwist
+    100066: rThighBend
+    100068: rThighTwist
+    400000: abdomenLower
+    400002: abdomenUpper
+    400004: chestLower
+    400006: chestUpper
+    400008: G3M_TShirt_14312
+    400010: G3M_TShirt_14312_LOD0
+    400012: G3M_TShirt_14312_LOD1
+    400014: G3M_TShirt_14312_LOD2
+    400016: G3M_TShirt_14312_LOD3
+    400018: head
+    400020: hip
+    400022: lCollar
+    400024: lEar
+    400026: //RootNode
+    400028: lForearmBend
+    400030: lForearmTwist
+    400032: lPectoral
+    400034: lShin
+    400036: lShldrBend
+    400038: lShldrTwist
+    400040: lThighBend
+    400042: lThighTwist
+    400044: neckLower
+    400046: neckUpper
+    400048: pelvis
+    400050: rCollar
+    400052: rEar
+    400054: rForearmBend
+    400056: rForearmTwist
+    400058: rPectoral
+    400060: rShin
+    400062: rShldrBend
+    400064: rShldrTwist
+    400066: rThighBend
+    400068: rThighTwist
+    4300000: G3M_TShirt_14312_LOD0
+    4300002: G3M_TShirt_14312_LOD1
+    4300004: G3M_TShirt_14312_LOD2
+    4300006: G3M_TShirt_14312_LOD3
+    9500000: //RootNode
+    13700000: G3M_TShirt_14312_LOD0
+    13700002: G3M_TShirt_14312_LOD1
+    13700004: G3M_TShirt_14312_LOD2
+    13700006: G3M_TShirt_14312_LOD3
+    20500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

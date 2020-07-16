@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: 792d44d4d6ac40d498b5fcb84574a57a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: abdomenLower
+    100002: abdomenUpper
+    100004: chestLower
+    100006: chestUpper
+    100008: G3M_Jacket_15527
+    100010: G3M_Jacket_15527_LOD0
+    100012: G3M_Jacket_15527_LOD1
+    100014: G3M_Jacket_15527_LOD2
+    100016: G3M_Jacket_15527_LOD3
+    100018: head
+    100020: hip
+    100022: lCarpal1
+    100024: lCarpal2
+    100026: lCarpal3
+    100028: lCarpal4
+    100030: lCollar
+    100032: //RootNode
+    100034: lForearmBend
+    100036: lForearmTwist
+    100038: lHand
+    100040: lPectoral
+    100042: lPinky1
+    100044: lRing1
+    100046: lShin
+    100048: lShldrBend
+    100050: lShldrTwist
+    100052: lThighBend
+    100054: lThighTwist
+    100056: lThumb1
+    100058: lThumb2
+    100060: neckLower
+    100062: neckUpper
+    100064: pelvis
+    100066: rCarpal1
+    100068: rCarpal2
+    100070: rCarpal3
+    100072: rCarpal4
+    100074: rCollar
+    100076: rForearmBend
+    100078: rForearmTwist
+    100080: rHand
+    100082: rPectoral
+    100084: rPinky1
+    100086: rRing1
+    100088: rShin
+    100090: rShldrBend
+    100092: rShldrTwist
+    100094: rThighBend
+    100096: rThighTwist
+    100098: rThumb1
+    100100: rThumb2
+    400000: abdomenLower
+    400002: abdomenUpper
+    400004: chestLower
+    400006: chestUpper
+    400008: G3M_Jacket_15527
+    400010: G3M_Jacket_15527_LOD0
+    400012: G3M_Jacket_15527_LOD1
+    400014: G3M_Jacket_15527_LOD2
+    400016: G3M_Jacket_15527_LOD3
+    400018: head
+    400020: hip
+    400022: lCarpal1
+    400024: lCarpal2
+    400026: lCarpal3
+    400028: lCarpal4
+    400030: lCollar
+    400032: //RootNode
+    400034: lForearmBend
+    400036: lForearmTwist
+    400038: lHand
+    400040: lPectoral
+    400042: lPinky1
+    400044: lRing1
+    400046: lShin
+    400048: lShldrBend
+    400050: lShldrTwist
+    400052: lThighBend
+    400054: lThighTwist
+    400056: lThumb1
+    400058: lThumb2
+    400060: neckLower
+    400062: neckUpper
+    400064: pelvis
+    400066: rCarpal1
+    400068: rCarpal2
+    400070: rCarpal3
+    400072: rCarpal4
+    400074: rCollar
+    400076: rForearmBend
+    400078: rForearmTwist
+    400080: rHand
+    400082: rPectoral
+    400084: rPinky1
+    400086: rRing1
+    400088: rShin
+    400090: rShldrBend
+    400092: rShldrTwist
+    400094: rThighBend
+    400096: rThighTwist
+    400098: rThumb1
+    400100: rThumb2
+    4300000: G3M_Jacket_15527_LOD0
+    4300002: G3M_Jacket_15527_LOD1
+    4300004: G3M_Jacket_15527_LOD2
+    4300006: G3M_Jacket_15527_LOD3
+    9500000: //RootNode
+    13700000: G3M_Jacket_15527_LOD0
+    13700002: G3M_Jacket_15527_LOD1
+    13700004: G3M_Jacket_15527_LOD2
+    13700006: G3M_Jacket_15527_LOD3
+    20500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

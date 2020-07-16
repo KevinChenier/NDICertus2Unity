@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: ee0b9e37d5d02054f81a632a6c178a13
+timeCreated: 1489505992
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: abdomenLower
+    100002: abdomenUpper
+    100004: chestLower
+    100006: chestUpper
+    100008: //RootNode
+    100010: etshirt_23160
+    100012: etshirt_23160_LOD0
+    100014: etshirt_23160_LOD1
+    100016: etshirt_23160_LOD2
+    100018: etshirt_23160_LOD3
+    100020: hip
+    100022: lCollar
+    100024: lForearmBend
+    100026: lPectoral
+    100028: lShldrBend
+    100030: lShldrTwist
+    100032: lThighBend
+    100034: lThighTwist
+    100036: neckLower
+    100038: neckUpper
+    100040: pelvis
+    100042: rCollar
+    100044: rForearmBend
+    100046: rPectoral
+    100048: rShldrBend
+    100050: rShldrTwist
+    100052: rThighBend
+    100054: rThighTwist
+    400000: abdomenLower
+    400002: abdomenUpper
+    400004: chestLower
+    400006: chestUpper
+    400008: //RootNode
+    400010: etshirt_23160
+    400012: etshirt_23160_LOD0
+    400014: etshirt_23160_LOD1
+    400016: etshirt_23160_LOD2
+    400018: etshirt_23160_LOD3
+    400020: hip
+    400022: lCollar
+    400024: lForearmBend
+    400026: lPectoral
+    400028: lShldrBend
+    400030: lShldrTwist
+    400032: lThighBend
+    400034: lThighTwist
+    400036: neckLower
+    400038: neckUpper
+    400040: pelvis
+    400042: rCollar
+    400044: rForearmBend
+    400046: rPectoral
+    400048: rShldrBend
+    400050: rShldrTwist
+    400052: rThighBend
+    400054: rThighTwist
+    4300000: etshirt_23160_LOD0
+    4300002: etshirt_23160_LOD1
+    4300004: etshirt_23160_LOD2
+    4300006: etshirt_23160_LOD3
+    9500000: //RootNode
+    13700000: etshirt_23160_LOD0
+    13700002: etshirt_23160_LOD1
+    13700004: etshirt_23160_LOD2
+    13700006: etshirt_23160_LOD3
+    20500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

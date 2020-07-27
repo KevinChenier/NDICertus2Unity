@@ -21,8 +21,6 @@ public class CertusManager : MonoBehaviour
 
     public float PerturbationOpeningMin = 1f, PerturbationOpeningMax = 1f, PerturbationOpeningDuration = 180f, PerturbationStretchingMin = 1f, PerturbationStretchingMax = 1f, PerturbationStretchingDuration = 180f, PerturbationProtrusionMin = 1f, PerturbationProtrusionMax = 1f, PerturbationProtrusionDuration = 180f;
 
-    
-
     void Start()
     {
         PathToPythonScript = Application.streamingAssetsPath + "/Certus/Certus2Unity.py";
@@ -30,9 +28,6 @@ public class CertusManager : MonoBehaviour
         pythonExeTmpText.text = PathToPythonExe;
         ServerIP = PlayerPrefs.GetString("ServerIP");
         serverIpText.text = ServerIP;
-
-        
-        
     }
 
     void Update()
@@ -57,7 +52,6 @@ public class CertusManager : MonoBehaviour
         */
 
         LoadMainScene();
-
     }
 
     public void SetPathToPythonExe()

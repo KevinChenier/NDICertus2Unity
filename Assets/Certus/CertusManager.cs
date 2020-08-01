@@ -80,7 +80,7 @@ public class CertusManager : MonoBehaviour
 
     void Command(string input)
     {
-        UnityEngine.Debug.LogWarning(string.Format("Strating command: {0} {1} {2}", PathToPythonExe, PathToPythonScript, input));
+        UnityEngine.Debug.LogWarning(string.Format("Starting command: {0} {1} {2}", PathToPythonExe, PathToPythonScript, input));
         var processInfo = new ProcessStartInfo(PathToPythonExe, PathToPythonScript + " " + input);
         processInfo.CreateNoWindow = false;
         processInfo.UseShellExecute = false;

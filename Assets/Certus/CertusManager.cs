@@ -19,7 +19,9 @@ public class CertusManager : MonoBehaviour
     public string ServerIP = "127.0.0.1";
     public TMP_Text serverIpText, pythonExeTmpText;
 
-    public float PerturbationOpeningMin = 1f, PerturbationOpeningMax = 1f, PerturbationOpeningDuration = 180f, PerturbationStretchingMin = 1f, PerturbationStretchingMax = 1f, PerturbationStretchingDuration = 180f, PerturbationProtrusionMin = 1f, PerturbationProtrusionMax = 1f, PerturbationProtrusionDuration = 180f;
+    public float PerturbationOpeningMin = 1f, PerturbationOpeningMax = 1f, PerturbationOpeningDuration = 180f, 
+        PerturbationStretchingMin = 1f, PerturbationStretchingMax = 1f, PerturbationStretchingDuration = 180f, 
+        PerturbationProtrusionMin = 1f, PerturbationProtrusionMax = 1f, PerturbationProtrusionDuration = 180f;
 
     void Start()
     {

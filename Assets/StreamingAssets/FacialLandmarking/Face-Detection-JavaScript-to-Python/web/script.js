@@ -21,14 +21,14 @@ video.addEventListener('play', () => {
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
-    var positions = detections[0].landmarks._positions;
+    const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
+    var positions = detections.landmarks._positions;
     var data = [positions[19].x, positions[19].y, 
                 positions[24].x, positions[24].y, 
-                positions[33].x, positions[33].y, 
+                positions[8].x, positions[8].y, 
                 positions[51].x, positions[51].y, 
                 positions[57].x, positions[57].y,
-                positions[8].x, positions[8].y,
+                positions[33].x, positions[33].y,
                 positions[48].x, positions[48].y,
                 positions[54].x, positions[54].y];
     console.log(data)

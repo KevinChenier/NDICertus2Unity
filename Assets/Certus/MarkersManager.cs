@@ -5,6 +5,7 @@ using Assets.LSL4Unity.Scripts.AbstractInlets;
 using TMPro;
 using UnityEngine.Animations;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace Assets.LSL4Unity.Scripts.Examples
 {
@@ -14,8 +15,8 @@ namespace Assets.LSL4Unity.Scripts.Examples
     public class MarkersManager : AFloatInlet
     {
         public Transform[] Markers;
-        public TMP_Text MouthOpening, MouthStretching, MouthProtrusion;
-        public Slider OpeningSlider, StretchingSlider, ProtrusionSlider;
+        public TMP_Text MouthOpening, MouthStretching, MouthProtrusion, LeftEyebrowRaise, RightEyebrowRaise;
+        public Slider OpeningSlider, StretchingSlider, ProtrusionSlider, LeftEyebrowRaiseSlider, RightEyebrowRaiseSlider;
 
         public bool Compensation = false;
 
@@ -31,13 +32,22 @@ namespace Assets.LSL4Unity.Scripts.Examples
             MouthStretchingMarker1,
             MouthStretchingMarker2,
             MouthProtrusionMarker1,
-            MouthProtrusionMarker2;
+            MouthProtrusionMarker2,
+            NoseMarker,
+            LeftEyebrowMarker,
+            RightEyebrowMarker;
 
-        public float Opening, Stretching, Protrusion, OpeningRemapped, StretchingRemapped, ProtrusionRemapped, MinOpening, MaxOpening, MinStretching, MaxStretching, MinProtrusion, MaxProtrusion;
+        public float Opening, Stretching, Protrusion, LeftEyebrow, RightEyebrow, 
+            OpeningRemapped, StretchingRemapped, ProtrusionRemapped, LeftEyebrowRemapped, RightEyebrowRemapped, 
+            MinOpening, MaxOpening, MinStretching, MaxStretching, MinProtrusion, MaxProtrusion, MinLeftEyebrow, MaxLeftEyebrow, MinRightEyebrow, MaxRightEyebrow;
 
         string lastSample = String.Empty;
 
         float[] Data;
+
+        [Range(0, 5)]
+        public float NoiseReduction;
+        List<Vector3> LastPositions = new List<Vector3>();
 
         protected override void Process(float[] newSample, double timeStamp)
         {
@@ -46,12 +56,22 @@ namespace Assets.LSL4Unity.Scripts.Examples
 
             Data = newSample;
 
+            // Initialize LastPositions
+            if (LastPositions.Count == 0)
+                for (int i = 0; i < Markers.Length; i++)
+                    LastPositions.Add(default);
+
             for (int i = 0; i < Markers.Length; i++)
             {
                 try
                 {
                     Vector3 _position = new Vector3(newSample[i * 3], newSample[i * 3 + 1], newSample[i * 3 + 2]);
-                    if (_position != Vector3.zero) Markers[i].localPosition = _position;
+
+                    if (_position != Vector3.zero && Vector3.Distance(LastPositions[i], _position) > NoiseReduction)
+                    {
+                        Markers[i].localPosition = _position;
+                        LastPositions[i] = _position;
+                    }
                 }
                 catch (Exception)
                 {
@@ -79,12 +99,16 @@ namespace Assets.LSL4Unity.Scripts.Examples
             MouthStretching.text = Stretching.ToString();
             Protrusion = Vector3.Distance(MouthProtrusionMarker1.position, MouthCenter.position);
             MouthProtrusion.text = Protrusion.ToString();
+            LeftEyebrow = Vector3.Distance(LeftEyebrowMarker.position, NoseMarker.position);
+            LeftEyebrowRaise.text = LeftEyebrow.ToString();
+            RightEyebrow = Vector3.Distance(RightEyebrowMarker.position, NoseMarker.position);
+            RightEyebrowRaise.text = RightEyebrow.ToString();
             //Debug.Log(string.Format("Got {0} samples at {1}", newSample.Length, timeStamp));
-            
+
             #region Calibration
 
             //Reset Calibration
-            if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.R))
+            if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.Space))
             {
                 MaxOpening = 0f;
                 MinOpening = 1f;
@@ -92,17 +116,21 @@ namespace Assets.LSL4Unity.Scripts.Examples
                 MinStretching = 1f;
                 MaxProtrusion = 0;
                 MinProtrusion = 1f;
+                MaxLeftEyebrow = 1f;
+                MinLeftEyebrow = 0f;
+                MaxRightEyebrow = 1f;
+                MinRightEyebrow = 0f;
             }
 
             //Calibrate Opening
             if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.O))
             {
-                if (Opening > MaxOpening)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
                     MaxOpening = Opening;
                 }
 
-                if (Opening < MinOpening)
+                if (Input.GetKey(KeyCode.DownArrow))
                 {
                     MinOpening = Opening;
                 }
@@ -110,12 +138,12 @@ namespace Assets.LSL4Unity.Scripts.Examples
 
             if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.S))
             {
-                if (Stretching > MaxStretching)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
                     MaxStretching = Stretching;
                 }
 
-                if (Stretching < MinStretching)
+                if (Input.GetKey(KeyCode.DownArrow))
                 {
                     MinStretching = Stretching;
                 }
@@ -124,14 +152,44 @@ namespace Assets.LSL4Unity.Scripts.Examples
             //Calibrate Protrusion
             if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.P))
             {
-                if (Protrusion > MaxProtrusion)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
                     MaxProtrusion = Protrusion;
                 }
 
-                if (Protrusion < MinProtrusion)
+                if (Input.GetKey(KeyCode.DownArrow))
                 {
                     MinProtrusion = Protrusion;
+                }
+            }
+
+            //Calibrate Eyebrows
+            if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.E))
+            {
+                if (Input.GetKey(KeyCode.L)) 
+                {
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        MaxLeftEyebrow = LeftEyebrow;
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        MinLeftEyebrow = LeftEyebrow;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.R))
+                {
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        MaxRightEyebrow = RightEyebrow;
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        MinRightEyebrow = RightEyebrow;
+                    }
                 }
             }
             #endregion
@@ -139,7 +197,9 @@ namespace Assets.LSL4Unity.Scripts.Examples
             OpeningRemapped = Mathf.InverseLerp(MinOpening, MaxOpening, Opening);
             StretchingRemapped = Mathf.InverseLerp(MinStretching, MaxStretching, Stretching);
             ProtrusionRemapped = Mathf.InverseLerp(MinProtrusion, MaxProtrusion, Protrusion);
-            
+            LeftEyebrowRemapped = Mathf.InverseLerp(MinLeftEyebrow, MaxLeftEyebrow, LeftEyebrow);
+            RightEyebrowRemapped = Mathf.InverseLerp(MinRightEyebrow, MaxRightEyebrow, RightEyebrow);
+
             if (Compensation)
             {
                 float maxValue = Mathf.Max( Mathf.Max(OpeningRemapped, StretchingRemapped), ProtrusionRemapped);
@@ -156,6 +216,8 @@ namespace Assets.LSL4Unity.Scripts.Examples
             OpeningSlider.value = OpeningRemapped;
             StretchingSlider.value = StretchingRemapped;
             ProtrusionSlider.value = ProtrusionRemapped;
+            LeftEyebrowRaiseSlider.value = LeftEyebrowRemapped;
+            RightEyebrowRaiseSlider.value = RightEyebrowRemapped;
         }
     }
 }

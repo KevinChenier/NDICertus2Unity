@@ -23,9 +23,12 @@ public class MorphsManager : MonoBehaviour
     public MarkersManager markersManager;
     //public CertusManager certusManager;
 
-    public float PerturbationOpening = 1f, PerturbationStretching = 1f, PerturbationProtrusion = 1f;
-    public float PerturbationOpeningMin = 1f, PerturbationOpeningMax = 1f, PerturbationStretchingMin = 1f, PerturbationStretchingMax = 1f, PerturbationProtrusionMin = 1f, PerturbationProtrusionMax = 1f;
-
+    public float PerturbationOpening = 1f, PerturbationStretching = 1f, PerturbationProtrusion = 1f, PerturbationLeftEyebrow = 1f, PerturbationRightEyebrow = 1f;
+    public float PerturbationOpeningMin = 1f, PerturbationOpeningMax = 1f, 
+        PerturbationStretchingMin = 1f, PerturbationStretchingMax = 1f, 
+        PerturbationProtrusionMin = 1f, PerturbationProtrusionMax = 1f, 
+        PerturbationLeftEyebrowMin = 1f, PerturbationLeftEyebrowMax = 1f, 
+        PerturbationRightEyebrowMin = 1f, PerturbationRightEyebrowMax = 1f;
 
     public float SilenceDuration = 2f, TalkDuration = 4f;
     public int NbRepetitions = 30;
@@ -35,7 +38,7 @@ public class MorphsManager : MonoBehaviour
 
     //public TweenBase TweenOpening, TweenStretching, TweenProtrusion;
 
-    public TextMeshProUGUI P_opening, P_stretching, P_protrusion, P_head;
+    public TextMeshProUGUI P_opening, P_stretching, P_protrusion, P_leftEyebrow, P_rightEyebrow, P_head;
     public TextMeshProUGUI FilePathUI;
 
     public bool ApplyVisemes = false;
@@ -157,6 +160,58 @@ public class MorphsManager : MonoBehaviour
         }
     }
 
+    public void SetPerturbationLeftEyebrowMin(string f)
+    {
+        f = f.Replace(".", ",");
+        try
+        {
+            PerturbationLeftEyebrowMin = float.Parse(f);
+        }
+        catch (System.Exception)
+        {
+            PerturbationLeftEyebrowMin = 1f;
+        }
+    }
+
+    public void SetPerturbationLeftEyebrowMax(string f)
+    {
+        f = f.Replace(".", ",");
+        try
+        {
+            PerturbationLeftEyebrowMax = float.Parse(f);
+        }
+        catch (System.Exception)
+        {
+            PerturbationLeftEyebrowMax = 1f;
+        }
+    }
+
+    public void SetPerturbationRightEyebrowMin(string f)
+    {
+        f = f.Replace(".", ",");
+        try
+        {
+            PerturbationRightEyebrowMin = float.Parse(f);
+        }
+        catch (System.Exception)
+        {
+            PerturbationRightEyebrowMin = 1f;
+        }
+    }
+
+    public void SetPerturbationRightEyebrowMax(string f)
+    {
+        f = f.Replace(".", ",");
+        try
+        {
+            PerturbationRightEyebrowMax = float.Parse(f);
+        }
+        catch (System.Exception)
+        {
+            PerturbationRightEyebrowMax = 1f;
+        }
+    }
+
     public void SetSilenceDuration(string f)
     {
         f = f.Replace(".", ",");
@@ -231,6 +286,10 @@ public class MorphsManager : MonoBehaviour
                                     + "Perturbated Stretching;"
                                     + "Protrusion;"
                                     + "Perturbated Protrusion;"
+                                    + "Left Eyebrow;"
+                                    + "Perturbated Left Eyebrow;"
+                                    + "Right Eyebrow;"
+                                    + "Perturbated Right Eyebrow;"
                                     + "Head Perturbation;"
                                     + "User Head X; User Head Y; User Head Z; Character Head X; Character Head Y; Character Head Z;"
                                     + "Repetition; State");
@@ -246,6 +305,8 @@ public class MorphsManager : MonoBehaviour
         PerturbationOpening = Mathf.Lerp(PerturbationOpeningMin, PerturbationOpeningMax, PerturbationInterpolation);
         PerturbationStretching = Mathf.Lerp(PerturbationStretchingMin, PerturbationStretchingMax, PerturbationInterpolation);
         PerturbationProtrusion = Mathf.Lerp(PerturbationProtrusionMin, PerturbationProtrusionMax, PerturbationInterpolation);
+        PerturbationLeftEyebrow = Mathf.Lerp(PerturbationLeftEyebrowMin, PerturbationLeftEyebrowMax, PerturbationInterpolation);
+        PerturbationRightEyebrow = Mathf.Lerp(PerturbationRightEyebrowMin, PerturbationRightEyebrowMax, PerturbationInterpolation);
         PerturbationHeadRotation = Mathf.Lerp(HeadRotation.RotationMultiplier_Start, HeadRotation.RotationMultiplier_End, PerturbationInterpolation);
 
         HeadRotation.rotationConstraint.weight = PerturbationHeadRotation;
@@ -253,6 +314,8 @@ public class MorphsManager : MonoBehaviour
         P_opening.text = PerturbationOpening.ToString();
         P_stretching.text = PerturbationStretching.ToString();
         P_protrusion.text = PerturbationProtrusion.ToString();
+        P_leftEyebrow.text = PerturbationLeftEyebrow.ToString();
+        P_rightEyebrow.text = PerturbationRightEyebrow.ToString();
         P_head.text = PerturbationHeadRotation.ToString();
 
         Main_Light.intensity = .25f;
@@ -300,19 +363,23 @@ public class MorphsManager : MonoBehaviour
     {
         if (ApplyVisemes)
         {
-            CharacterManager.SetBlendshapeValue("eCTRLMouthOpenWide", markersManager.OpeningRemapped    * PerturbationOpening    * 100f );
-            CharacterManager.SetBlendshapeValue("PHMMouthWidth",      markersManager.StretchingRemapped * PerturbationStretching * (1f - StretchingVsSmile) *100f );
-            CharacterManager.SetBlendshapeValue("eCTRLMouthSmile",      markersManager.StretchingRemapped * PerturbationStretching * StretchingVsSmile * 100f );
-            CharacterManager.SetBlendshapeValue("PHMMouthWidth_NEGATIVE_",      100f - markersManager.StretchingRemapped * PerturbationStretching * 100f );
-            CharacterManager.SetBlendshapeValue("eCTRLvW",            markersManager.ProtrusionRemapped * PerturbationProtrusion * 100f );
+            CharacterManager.SetBlendshapeValue("eCTRLMouthOpenWide", markersManager.OpeningRemapped * PerturbationOpening * 100f );
+            CharacterManager.SetBlendshapeValue("PHMMouthWidth", markersManager.StretchingRemapped * PerturbationStretching * (1f - StretchingVsSmile) *100f );
+            CharacterManager.SetBlendshapeValue("eCTRLMouthSmile", markersManager.StretchingRemapped * PerturbationStretching * StretchingVsSmile * 100f );
+            CharacterManager.SetBlendshapeValue("PHMMouthWidth_NEGATIVE_", 100f - markersManager.StretchingRemapped * PerturbationStretching * 100f );
+            CharacterManager.SetBlendshapeValue("eCTRLvW", markersManager.ProtrusionRemapped * PerturbationProtrusion * 100f );
+            CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownL", markersManager.LeftEyebrowRemapped * PerturbationLeftEyebrow * 100f);
+            CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownR", markersManager.RightEyebrowRemapped * PerturbationRightEyebrow * 100f);
         }
         else
         {
             CharacterManager.SetBlendshapeValue("eCTRLMouthOpenWide", 0f);
-            CharacterManager.SetBlendshapeValue("PHMMouthWidth"     , 0f);
+            CharacterManager.SetBlendshapeValue("PHMMouthWidth" , 0f);
             CharacterManager.SetBlendshapeValue("eCTRLMouthSmile", 0f);
             CharacterManager.SetBlendshapeValue("PHMMouthWidth_NEGATIVE_", 100f);
-            CharacterManager.SetBlendshapeValue("eCTRLvW"           , 0f);
+            CharacterManager.SetBlendshapeValue("eCTRLvW", 0f);
+            CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownL", 0f);
+            CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownR", 0f);
         }
 
         if (RecordData)
@@ -324,6 +391,10 @@ public class MorphsManager : MonoBehaviour
                                                      + markersManager.StretchingRemapped * PerturbationStretching + ";"
                                                      + markersManager.ProtrusionRemapped + ";"
                                                      + markersManager.ProtrusionRemapped * PerturbationProtrusion + ";"
+                                                     + markersManager.LeftEyebrowRemapped + ";"
+                                                     + markersManager.LeftEyebrowRemapped * PerturbationLeftEyebrow + ";"
+                                                     + markersManager.RightEyebrowRemapped + ";"
+                                                     + markersManager.RightEyebrowRemapped * PerturbationRightEyebrow + ";"
                                                      + PerturbationHeadRotation + ";"
                                                      + HeadRigidBody.localEulerAngles.x + ";"
                                                      + HeadRigidBody.localEulerAngles.y + ";"

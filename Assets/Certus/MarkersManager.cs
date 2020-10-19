@@ -41,13 +41,14 @@ namespace Assets.LSL4Unity.Scripts.Examples
             OpeningRemapped, StretchingRemapped, ProtrusionRemapped, LeftEyebrowRemapped, RightEyebrowRemapped, 
             MinOpening, MaxOpening, MinStretching, MaxStretching, MinProtrusion, MaxProtrusion, MinLeftEyebrow, MaxLeftEyebrow, MinRightEyebrow, MaxRightEyebrow;
 
+        [Range(0, 5)]
+        public float JavascriptFaceAPINoiseReduction;
+
         string lastSample = String.Empty;
 
         float[] Data;
 
-        [Range(0, 5)]
-        public float NoiseReduction;
-        List<Vector3> LastPositions = new List<Vector3>();
+        List<Vector3> LastValidPositions = new List<Vector3>();
 
         protected override void Process(float[] newSample, double timeStamp)
         {
@@ -57,9 +58,9 @@ namespace Assets.LSL4Unity.Scripts.Examples
             Data = newSample;
 
             // Initialize LastPositions
-            if (LastPositions.Count == 0)
+            if (LastValidPositions.Count == 0)
                 for (int i = 0; i < Markers.Length; i++)
-                    LastPositions.Add(default);
+                    LastValidPositions.Add(default);
 
             for (int i = 0; i < Markers.Length; i++)
             {
@@ -67,10 +68,10 @@ namespace Assets.LSL4Unity.Scripts.Examples
                 {
                     Vector3 _position = new Vector3(newSample[i * 3], newSample[i * 3 + 1], newSample[i * 3 + 2]);
 
-                    if (_position != Vector3.zero && Vector3.Distance(LastPositions[i], _position) > NoiseReduction)
+                    if (_position != Vector3.zero && Vector3.Distance(LastValidPositions[i], _position) > JavascriptFaceAPINoiseReduction)
                     {
                         Markers[i].localPosition = _position;
-                        LastPositions[i] = _position;
+                        LastValidPositions[i] = _position;
                     }
                 }
                 catch (Exception)

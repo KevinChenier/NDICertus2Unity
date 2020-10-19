@@ -50,6 +50,8 @@ public class MorphsManager : MonoBehaviour
 
     public Transform HeadRigidBody, HeadEffector;
 
+    public UnityReceive_iFacialMocap iFacialMocap;
+
     void Start()
     {
         //certusManager = FindObjectOfType<CertusManager>();
@@ -363,13 +365,16 @@ public class MorphsManager : MonoBehaviour
     {
         if (ApplyVisemes)
         {
-            CharacterManager.SetBlendshapeValue("eCTRLMouthOpenWide", markersManager.OpeningRemapped * PerturbationOpening * 100f );
-            CharacterManager.SetBlendshapeValue("PHMMouthWidth", markersManager.StretchingRemapped * PerturbationStretching * (1f - StretchingVsSmile) *100f );
-            CharacterManager.SetBlendshapeValue("eCTRLMouthSmile", markersManager.StretchingRemapped * PerturbationStretching * StretchingVsSmile * 100f );
-            CharacterManager.SetBlendshapeValue("PHMMouthWidth_NEGATIVE_", 100f - markersManager.StretchingRemapped * PerturbationStretching * 100f );
-            CharacterManager.SetBlendshapeValue("eCTRLvW", markersManager.ProtrusionRemapped * PerturbationProtrusion * 100f );
-            CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownL", markersManager.LeftEyebrowRemapped * PerturbationLeftEyebrow * 100f);
-            CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownR", markersManager.RightEyebrowRemapped * PerturbationRightEyebrow * 100f);
+            if (!iFacialMocap.sendDataToMCS)
+            {
+                CharacterManager.SetBlendshapeValue("eCTRLMouthOpenWide", markersManager.OpeningRemapped * PerturbationOpening * 100f);
+                CharacterManager.SetBlendshapeValue("PHMMouthWidth", markersManager.StretchingRemapped * PerturbationStretching * (1f - StretchingVsSmile) * 100f);
+                CharacterManager.SetBlendshapeValue("eCTRLMouthSmile", markersManager.StretchingRemapped * PerturbationStretching * StretchingVsSmile * 100f);
+                CharacterManager.SetBlendshapeValue("PHMMouthWidth_NEGATIVE_", 100f - markersManager.StretchingRemapped * PerturbationStretching * 100f);
+                CharacterManager.SetBlendshapeValue("eCTRLvW", markersManager.ProtrusionRemapped * PerturbationProtrusion * 100f);
+                CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownL", markersManager.LeftEyebrowRemapped * PerturbationLeftEyebrow * 100f);
+                CharacterManager.SetBlendshapeValue("eCTRLBrowUp_DownR", markersManager.RightEyebrowRemapped * PerturbationRightEyebrow * 100f);
+            }
         }
         else
         {

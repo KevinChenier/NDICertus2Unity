@@ -6,6 +6,7 @@ using System.IO;
 using System;
 using System.Threading;
 using System.Collections.Generic;
+using System.Globalization;
 
 public class UnityReceive_iFacialMocap : MonoBehaviour
 {
@@ -16,12 +17,28 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 	string faceObjGrpName = "";
 	string objectNames = "";
 	List<GameObject> objectArray;
+	GameObject currentCharacter;
 
 	private string messageString = "";
 	public int LOCAL_PORT = 50003;
 	public MorphsManager MorphsManager;
 	public bool sendDataToMCS = false;
+	public List<GameObject> iFacialMocapCharacters;
 	TransferToMCS Transferer;
+
+	GameObject GetCharacter(string name)
+    {
+		foreach(GameObject character in iFacialMocapCharacters)
+        {
+			if (character.name.Equals(name))
+            {
+				Debug.Log("Character found!: " + name);
+				return character;
+			}
+        }
+		Debug.Log("No character found");
+		return null;
+    }
 
 	// Start is called 
 	void Start()
@@ -40,10 +57,10 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 		{
 			string[] strArray1 = messageString.Split(new Char[] { '=' });
 
-            if (sendDataToMCS)
-            {
+			if (sendDataToMCS)
+			{
 				Transferer = new TransferToMCS(MorphsManager);
-            }
+			}
 
 			if (strArray1.Length == 2)
 			{
@@ -61,9 +78,17 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 							if (faceObjGrpName != strArray3[1].ToString())
 							{
 								faceObjGrpName = strArray3[1].ToString();
-								GameObject faceObjGrp = GameObject.Find(faceObjGrpName);
+
+								GameObject faceObjGrp = GetCharacter(faceObjGrpName);
 								if (faceObjGrp != null)
 								{
+									foreach (GameObject character in iFacialMocapCharacters)
+									{
+										character.SetActive(false);
+									}
+									currentCharacter = faceObjGrp;
+									currentCharacter.SetActive(true);
+
 									List<GameObject> list = GetAllChildren.GetAll(faceObjGrp);
 
 									meshTargetList = new List<SkinnedMeshRenderer>();
@@ -91,16 +116,16 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 							{
 								meshTargetList[i].SetBlendShapeWeight(index, weight);
 
-                                if (sendDataToMCS && MorphsManager.ApplyVisemes)
-                                {
+								if (sendDataToMCS && MorphsManager.ApplyVisemes)
+								{
 									Transferer.SetBlendshape(mappedShapeName, weight);
-                                }
+								}
 							}
 						}
 					}
 				}
 				string objectNamesNow = GetCombineNames(strArray1[1].ToString());
-				
+
 				if (objectNamesNow != objectNames)
 				{
 					UpdateObjectArray(strArray1[1]);
@@ -122,11 +147,11 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 							{
 								if (strArray2[0].Contains("Position"))
 								{
-									objectArray[objectArrayIndex].transform.localPosition = new Vector3(float.Parse(commaList[0]), float.Parse(commaList[1]), float.Parse(commaList[2]));
+									objectArray[objectArrayIndex].transform.localPosition = new Vector3(float.Parse(commaList[0], CultureInfo.InvariantCulture), float.Parse(commaList[1], CultureInfo.InvariantCulture), float.Parse(commaList[2], CultureInfo.InvariantCulture));
 								}
 								else
 								{
-									objectArray[objectArrayIndex].transform.localRotation = Quaternion.Euler(float.Parse(commaList[0]), float.Parse(commaList[1]), float.Parse(commaList[2]));
+									objectArray[objectArrayIndex].transform.localRotation = Quaternion.Euler(float.Parse(commaList[0], CultureInfo.InvariantCulture), float.Parse(commaList[1], CultureInfo.InvariantCulture), float.Parse(commaList[2], CultureInfo.InvariantCulture));
 								}
 							}
 							objectArrayIndex++;
@@ -160,7 +185,7 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 		string combineStr = "";
 		foreach (string message in strArray.ToString().Split(new Char[] { '|' }))
 		{
-			if(message != "")
+			if (message != "")
 			{
 				string[] strArray1 = message.Split(new Char[] { '#' });
 				string[] commaList = strArray1[1].Split(new Char[] { ',' });
@@ -200,13 +225,13 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 	{
 		thread.Abort();
 	}
-    
+
 	public void StopUDP()
-    {
-        udp.Close();
-        thread.Abort();
-    }
-	
+	{
+		udp.Close();
+		thread.Abort();
+	}
+
 	void Stop()
 	{
 		try

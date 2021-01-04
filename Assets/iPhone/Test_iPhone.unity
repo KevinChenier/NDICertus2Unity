@@ -112,26 +112,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &262031886 stripped
+--- !u!1 &613634588
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100052, guid: 9d626814a0506dc4fbfeafefe3c3c20e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1634745562}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &262031887
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613634590}
+  - component: {fileID: 613634589}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &613634589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262031886}
+  m_GameObject: {fileID: 613634588}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac3c0eb89f554448ff9a5937ee15d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LOCAL_PORT: 50003
-  transferDataToMCS: 0
+  MorphsManager: {fileID: 0}
+  sendDataToMCS: 0
+--- !u!4 &613634590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613634588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.39, y: 2.2175612, z: 3.5391781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039565396
 GameObject:
   m_ObjectHideFlags: 0

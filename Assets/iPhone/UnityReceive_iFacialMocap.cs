@@ -21,10 +21,8 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 
 	private string messageString = "";
 	public int LOCAL_PORT = 50003;
-	public MorphsManager MorphsManager;
 	public bool sendDataToMCS = false;
 	public List<GameObject> iFacialMocapCharacters;
-	TransferToMCS Transferer;
 
 	GameObject GetCharacter(string name)
     {
@@ -56,11 +54,6 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 		try
 		{
 			string[] strArray1 = messageString.Split(new Char[] { '=' });
-
-			if (sendDataToMCS)
-			{
-				Transferer = new TransferToMCS(MorphsManager);
-			}
 
 			if (strArray1.Length == 2)
 			{
@@ -115,11 +108,6 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 							if (index > -1)
 							{
 								meshTargetList[i].SetBlendShapeWeight(index, weight);
-
-								if (sendDataToMCS && MorphsManager.ApplyVisemes)
-								{
-									Transferer.SetBlendshape(mappedShapeName, weight);
-								}
 							}
 						}
 					}

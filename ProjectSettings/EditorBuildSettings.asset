@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Certus2MCS.unity
-    guid: 7e5e35a9c0682314caec6a2ab80cf93b
+    path: Assets/Scenes/NeutralScene.unity
+    guid: 660886237d4ba884dbf030947aa54508
+  - enabled: 1
+    path: Assets/Scenes/SchoolScene.unity
+    guid: b29c30f5e56b4de419bd7699d1cad3bf
   m_configObjects: {}

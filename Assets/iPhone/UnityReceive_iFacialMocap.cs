@@ -40,16 +40,22 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 
 	// Start is called 
 	void Start()
-	{
-		udp = new UdpClient(LOCAL_PORT);
-		udp.Client.ReceiveTimeout = 500;
+    {
+		Initialize();
+    }
 
-		thread = new Thread(new ThreadStart(ThreadMethod));
-		thread.Start();
-	}
+    public void Initialize()
+    {
+        Debug.Log("Socket UDP initialized");
+        udp = new UdpClient(LOCAL_PORT);
+        udp.Client.ReceiveTimeout = 500;
 
-	// Update is called once per frame
-	void Update()
+        thread = new Thread(new ThreadStart(ThreadMethod));
+        thread.Start();
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 		try
 		{
@@ -211,10 +217,15 @@ public class UnityReceive_iFacialMocap : MonoBehaviour
 
 	void OnApplicationQuit()
 	{
-		thread.Abort();
+		StopUDP();
 	}
 
-	public void StopUDP()
+    void OnDestroy()
+    {
+		StopUDP();
+	}
+
+    public void StopUDP()
 	{
 		udp.Close();
 		thread.Abort();
